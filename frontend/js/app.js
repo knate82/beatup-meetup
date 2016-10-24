@@ -1,13 +1,13 @@
-var app = angular.module("BeatupApp", ["ngRoute"])
+angular.module("BeatupApp", ["ngRoute"])
 
-.config("$routeProvider", function($routeProvider){
+.config(function($routeProvider){
   $routeProvider
-  .when("/", {
+  .when("/main", {
     templateUrl: "./templates/main.html",
-    controller: "LoginController"
+    controller: "MainController"
   })
-  .otherwise("/", {
-    templateUrl: "./templates/main.html",
-    controller: "LoginController"
+  .otherwise("/main", {
+      templateUrl: "./templates/main.html",
+        controller: "MainController"
   });
 })
