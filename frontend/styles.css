@@ -54,3 +54,30 @@
 .topBar button {
     margin-top: 17vh;
 }
+
+.single-bu-image {
+    height: 250px;
+    width: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    margin: 2em;
+    display: inline-block;
+}
+
+.single-bu-container {
+    position: relative;
+}
+
+.single-bu-textcenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+}
+
+.single-bu-overlay {
+    color: white;
+    text-align: center;
+}
