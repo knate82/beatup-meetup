@@ -21,3 +21,64 @@
 .main-content .panel-body {
     height: 175px;
 }
+
+.seattle-header {
+    background-image: url("images/seattle2.jpg");
+    height: 25vh;
+}
+
+.city-header {
+    margin-top: 1vh;
+    min-height: 25vh !important;
+}
+
+.city-header h1 {
+    margin-top: 3vh;
+    margin-left: 5vh;
+}
+.header-text {
+    color: white;
+    margin-bottom: 6vh;
+    margin-left: 5vh;
+    max-width: 15em;
+}
+.topBar {
+    height: 3em;
+}
+
+.topBar h4 {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.topBar button {
+    margin-top: 17vh;
+}
+
+.single-bu-image {
+    height: 250px;
+    width: 250px;
+    min-width: 250px;
+    min-height: 250px;
+    display: inline-block;
+}
+
+.single-bu-container {
+    position: relative;
+    margin-bottom: 3em;
+}
+
+.single-bu-textcenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+}
+
+.single-bu-overlay {
+    color: white;
+    text-align: center;
+}

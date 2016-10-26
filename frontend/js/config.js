@@ -7,6 +7,10 @@ app.config(function($routeProvider){
     templateUrl: "./templates/main.html",
     controller: "MainController"
   })
+  .when("/seattle", {
+    templateUrl: "./templates/cityView.html",
+    controller: "SeattleController"
+  })
   .otherwise("/main", {
       templateUrl: "./templates/main.html",
         controller: "MainController"
