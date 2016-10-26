@@ -29,6 +29,7 @@
 
 .city-header {
     margin-top: 1vh;
+    min-height: 25vh !important;
 }
 
 .city-header h1 {
