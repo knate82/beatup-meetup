@@ -1,3 +1,4 @@
+
 angular.module("BeatupApp", ["ngRoute"])
 
 .config(function($routeProvider){
@@ -18,4 +19,4 @@ angular.module("BeatupApp", ["ngRoute"])
       templateUrl: "./templates/main.html",
       controller: "MainController"
   });
-})
+});

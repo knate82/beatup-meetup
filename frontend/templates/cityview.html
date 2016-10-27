@@ -1,0 +1,32 @@
+<div class="row topBar">
+    <h4>Meetup Beatup</h4>
+<div>
+<div class="container-fluid main-header {{cityHeaderClass}}">
+    <div class="row">
+        <div class="col-sm-4 city-header clearfix">
+            <h1>{{cityName}}</h1>
+            <p class="header-text">{{pText}}</p>
+        </div>
+        <div class="col-sm-4 text-center">
+            <button class="btn btn-md btn-danger">Create a beatup</button>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+<div class="container main-content">
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 text-center">
+            <div class="row">
+                <div class="col-md-4 single-bu-container" ng-repeat="event in beatups">
+                    <img class="img-thumbnail single-bu-image" src="{{event.imgUrl}}" alt="hey">
+                    <div class="col-xs-4 single-bu-textcenter">
+                        <a class="single-bu-overlay" href="{{event.detail}}">{{event.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
