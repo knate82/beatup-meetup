@@ -1,0 +1,47 @@
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-xs-0 col-sm-2"></div>
+        <div class="col-xs-9 col-sm-8 col-md-9">
+            <h1 style="text-align:center">beatup meetup</h1>
+        </div>
+        <div class="col-xs-3 col-sm-2 col-md-1">
+            <button class="btn btn-lg" ng-click="login()">Login</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid main-header">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 style="text-align:center">RULE #2: YOU DO NOT SPEAK ABOUT BEAT UP MEET UP</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-0 col-sm-2 col-md-3"></div>
+        <div class="col-sm-8 col-md-6">
+            <form name="userForm" novalidate>
+                <h2 style="text-align:center">Register</h2>
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" ng-model="user.name" required placeholder="Name">
+                    <p ng-show="userForm.name.$invalid && userForm.name.$touched">Name is required.</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="user.username" name="username" required placeholder="Create A Username">
+                    <p ng-show="userForm.username.$invalid && userForm.username.$touched">Username is required.</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-minlength="7" name="password" ng-model="user.password" required placeholder="Password">
+                    <p ng-show="userForm.password.$error.minlength && userForm.password.$touched">Your password must be 7 or more characters.</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" ng-model="user.passwordRepeat" required placeholder="Confirm Password" name="passwordRepeat">
+                    <p ng-show="user.passwordRepeat !== user.password && userForm.passwordRepeat.$touched">Passwords don't match.</p>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg" ng-click="login(user)" ng-disabled="userForm.$invalid">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

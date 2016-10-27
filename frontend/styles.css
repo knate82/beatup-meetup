@@ -94,3 +94,7 @@
     border-left: 3px solid white;
     border-right: 3px solid white;
 }
+
+.ng-invalid.ng-touched {
+    border-color: red;
+}
