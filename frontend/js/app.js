@@ -7,11 +7,11 @@ angular.module("BeatupApp", ["ngRoute"])
       controller: "MainController"
   })
   .when("/signup", {
-      templateUrl: "./templates/login.html",
+      templateUrl: "./templates/signup.html",
       controller: "SignupController"
   })
   .when("/login", {
-      templateUrl: "./templates/signup.html",
+      templateUrl: "./templates/login.html",
       controller: "LoginController"
   })
   .otherwise("/main", {

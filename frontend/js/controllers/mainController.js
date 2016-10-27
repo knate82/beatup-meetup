@@ -1,5 +1,5 @@
 angular.module("BeatupApp")
 
-.controller("MainController", ["$scope", function($scope){
+.controller("MainController", ["$scope", "$location", function($scope, $location){
     
 }])
