@@ -1,7 +1,6 @@
 angular.module("BeatupApp")
 
 .controller("MainController", ["$scope", "$location", function($scope, $location){
-<<<<<<< HEAD
     
     $scope.login = function(){
         $location.path("/login");
@@ -10,7 +9,5 @@ angular.module("BeatupApp")
     $scope.register = function(){
         $location.path("/signup");
     }
-=======
->>>>>>> dev
     
 }])
