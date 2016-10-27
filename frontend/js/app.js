@@ -15,6 +15,14 @@ angular.module("BeatupApp", ["ngRoute"])
       templateUrl: "./templates/signup.html",
       controller: "LoginController"
   })
+  .when("/event", {
+      templateUrl: "./templates/event.html",
+      controller: "eventController"
+  })
+  .when("/cityview", {
+      templateUrl: "./templates/cityview.html",
+      controller: "SeattleController"
+  })
   .otherwise("/main", {
       templateUrl: "./templates/main.html",
       controller: "MainController"
