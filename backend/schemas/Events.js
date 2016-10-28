@@ -12,14 +12,15 @@ var EventSchema = new mongoose.Schema({
 		required: true
 	},
 	location: {
-		type: String,
-		required: true
+		street: String,
+		city: String,
+		state: String
 	},
 	organizer: {
 		type: Schema.Types.ObjectId,
 		ref: "User"
 	},
-	attendees: [{
+	members: [{
 		type: Schema.Types.ObjectId,
 		ref: "User"
 	}],
@@ -34,7 +35,8 @@ var EventSchema = new mongoose.Schema({
 			type: Schema.Types.ObjectId,
 			ref: "User"
 		}
-	}]
+	}],
+	imgUrl: String
 });
 
 module.exports = mongoose.model('Event', EventSchema);
