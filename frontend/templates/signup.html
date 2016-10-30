@@ -12,7 +12,7 @@
 <div class="container-fluid main-header">
     <div class="row">
         <div class="col-sm-12">
-            <h2 style="text-align:center">RULE #2: YOU DO NOT SPEAK ABOUT BEAT UP MEET UP</h2>
+            <h2 style="text-align:center">RULE #2: YOU DO NOT TALK ABOUT BEAT UP MEET UP</h2>
         </div>
     </div>
 </div>
@@ -23,8 +23,12 @@
             <form name="userForm" novalidate>
                 <h2 style="text-align:center">Register</h2>
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" ng-model="user.name" required placeholder="Name">
-                    <p ng-show="userForm.name.$invalid && userForm.name.$touched">Name is required.</p>
+                    <input type="text" name="firstName" class="form-control" ng-model="user.firstName" required placeholder="First Name">
+                    <p ng-show="userForm.firstName.$invalid && userForm.firstName.$touched">Name is required.</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="lastName" class="form-control" ng-model="user.lastName" required placeholder="Last Name">
+                    <p ng-show="userForm.lastName.$invalid && userForm.lastName.$touched">Name is required.</p>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" ng-model="user.username" name="username" required placeholder="Create A Username">
