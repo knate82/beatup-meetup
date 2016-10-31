@@ -19,7 +19,7 @@ angular.module("BeatupApp")
 	
 	
 	$scope.addComment = function (index) {
-		$scope.comment: {
+		$scope.comment = {
 			content: $scope.content,
 			owner: $scope.user
 		};
