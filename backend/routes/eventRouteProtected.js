@@ -1,11 +1,11 @@
 var express = require('express');
-var itemRouteProtected = express.Router();
+var eventRouteProtected = express.Router();
 var User = require('../schemas/Users');
 var Event = require('../schemas/Events');
 
 // This route is for accessing user-specific data
 
-eventRouteProtected.route("/")
+eventRouteProtected.route("/:")
 	// GET all events posted by a user
 	.get(function (req, res) {
 		Event.find({
@@ -40,7 +40,7 @@ eventRouteProtected.route("/:eventId")
 			});
 	})
 	// PUT an event posting
-	
+
 	.put(function (req, res) {
 		console.log(req.body);
 		Event.findOneAndUpdate({

@@ -42,7 +42,8 @@ authRoute.post("/login", function (req, res) {
 							});
 						} else {
 							var token = jwt.sign(foundUser, config.secret, {
-								expiresIn: "24h"
+								expiresIn: "24h",
+								secret: "key banana your mom"
 							});
 							res.send({
 								success: true,
