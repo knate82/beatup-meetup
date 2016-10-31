@@ -61,4 +61,4 @@ userSchema.methods.removePassword = function () {
 	return user;
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);
