@@ -6,7 +6,7 @@ angular.module("BeatupApp")
 	$scope.event = {};
 	$scope.comments = [];
 	$scope.members = [];
-	
+
 
 	$scope.joinEvent = function (index) {
 		EventService.joinEvent($scope.event[index], $scope.user)
@@ -14,12 +14,12 @@ angular.module("BeatupApp")
 			$scope.event.members.splice(index, 1, user);
 		});
 	};
-	
-	
-	
-	
+
+
+
+
 	$scope.addComment = function (index) {
-		$scope.comment: {
+		$scope.comment = {
 			content: $scope.content,
 			owner: $scope.user
 		};
@@ -28,11 +28,11 @@ angular.module("BeatupApp")
 			$scope.event.comments.splice(index, 1, comment);
 		});
 		$scope.comment = {
-			content = '',
-			owner = ''
+			content: '',
+			owner: ''
 		};
 	};
-}])
+}]);
 
 
 
