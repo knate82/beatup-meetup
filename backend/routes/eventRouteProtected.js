@@ -1,5 +1,5 @@
 var express = require('express');
-var itemRouteProtected = express.Router();
+var eventRouteProtected = express.Router();
 var User = require('../schemas/Users');
 var Event = require('../schemas/Events');
 
@@ -18,6 +18,7 @@ eventRouteProtected.route("/")
 	// POST a new event listing
 	.post(function (req, res) {
 		var newEvent = new Event(req.body);
+		newEvent.organizer = req.user._id;
 		newEvent.save(function (err, savedEvent) {
 			if (err) res.status(500).send(err);
 			res.send(savedEvent);

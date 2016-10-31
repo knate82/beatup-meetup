@@ -17,7 +17,7 @@ var eventRoute = require('./routes/eventRoute');
 var eventRouteProtected = require('./routes/eventRouteProtected');
 var authRoute = require('./routes/authRoute');
 
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || config.port;
 
 mongoose.connect(config.database, function(){
 	console.log("Mongoose here!");
@@ -44,4 +44,4 @@ app.use(express.static(path.join(__dirname, "frontEnd")));
 
 app.listen(port, function () {
     console.log("You have reached port " + port);
-});
+}); 
