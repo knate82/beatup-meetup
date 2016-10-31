@@ -6,8 +6,8 @@ angular.module('BeatupApp')
 	$scope.loginUser = {};
 	$scope.user = UserService.loggedInUser;
 
-	$scope.login = function () {
-		UserService.login($scope.loginUser).then(function () {
+	$scope.login = function (user) {
+		UserService.login(user).then(function (response) {
 			$scope.user = UserService.loggedInUser;
 			console.log("$scope.user", $scope.user);
 			$scope.loginUser = {};
@@ -20,11 +20,14 @@ angular.module('BeatupApp')
 		});
 	};
 
-	$scope.signup = function () {
-		UserService.signup($scope.newUser).then(function (response) {
-			UserService.login($scope.newUser).then(function (response) {
-				$scope.newUser = {};
+    
+	$scope.signup = function (user) {
+        
+		UserService.signup(user).then(function (response) {
+			UserService.login(user).then(function (response) {
+				$scope.user = {};
 			});
 		});
 	};
+    
 }])

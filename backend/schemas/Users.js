@@ -22,6 +22,9 @@ var userSchema = new Schema({
 		type: String,
 		required: true
 	},
+    passwordRepeat: {
+        type: String
+    },
 	eventsCreated: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Event'

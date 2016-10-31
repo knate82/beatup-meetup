@@ -1,4 +1,4 @@
-angular.module("BeatupApp", ["ngRoute"])
+angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
 
 .config(function($routeProvider){
   $routeProvider
@@ -8,11 +8,11 @@ angular.module("BeatupApp", ["ngRoute"])
   })
   .when("/signup", {
       templateUrl: "./templates/signup.html",
-      controller: "AuthController"
+      controller: "authController"
   })
   .when("/login", {
       templateUrl: "./templates/login.html",
-      controller: "AuthController"
+      controller: "authController"
   })
   .when("/event", {
       templateUrl: "./templates/event.html",
