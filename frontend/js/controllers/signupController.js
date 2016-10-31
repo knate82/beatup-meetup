@@ -6,7 +6,7 @@ angular.module("BeatupApp")
         $location.path("/login");
     }
     
-    $scope.register = function(user){
+    $scope.logUserInfo = function(user){
         
     }
     
