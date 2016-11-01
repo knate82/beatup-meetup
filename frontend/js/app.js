@@ -1,5 +1,5 @@
 
-angular.module("BeatupApp", ["ngRoute"])
+angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
 
 .config(function($routeProvider){
   $routeProvider
@@ -9,11 +9,11 @@ angular.module("BeatupApp", ["ngRoute"])
   })
   .when("/signup", {
       templateUrl: "./templates/signup.html",
-      controller: "SignupController"
+      controller: "authController"
   })
   .when("/login", {
       templateUrl: "./templates/login.html",
-      controller: "LoginController"
+      controller: "authController"
   })
   .when("/event", {
       templateUrl: "./templates/event.html",
@@ -28,3 +28,4 @@ angular.module("BeatupApp", ["ngRoute"])
       controller: "MainController"
   });
 });
+

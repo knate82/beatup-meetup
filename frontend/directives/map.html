@@ -1,0 +1,10 @@
+<div class="row margin-bottom" map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{mapUri}}">
+    <ng-map zoom="8" center="{{hotel.HotelInfo.Street}}" style="margin: 0 auto;">
+    <marker position="{{hotel.HotelInfo.Latitude+','+hotel.HotelInfo.Logitude}}" title="{{hotel.Name}}"></marker>
+    </ng-map>
+</div>
+
+
+
+
+$scope.mapUri = 'https://maps.google.com/maps/api/js?v=3.21&key=**ApiKey**';

@@ -28,8 +28,8 @@ angular.module("BeatupApp")
 			$scope.event.comments.splice(index, 1, comment);
 		});
 		$scope.comment = {
-			content = '',
-			owner = ''
+			content: '',
+			owner: ''
 		};
 	};
 }])
