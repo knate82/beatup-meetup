@@ -16,6 +16,10 @@
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+#map {
+	height: 25%;
+}
+
 .main-header {
     background-image: url("images/xray.jpg");
     background-position: left;

@@ -9,7 +9,6 @@ var bcrypt = require('bcrypt');
 authRoute.post("/signup", function (req, res) {
 	var newUser = new User(req.body);
 	newUser.save(function (err, savedUser) {
-
 		if (err) res.status(500).send(err);
 		res.send(savedUser);
 	});
