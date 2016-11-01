@@ -19,7 +19,9 @@ var authRoute = require('./routes/authRoute');
 
 var port = process.env.PORT || config.port;
 
-mongoose.connect(config.database, function(){
+mongoose.connect(config.database, function(err){
+	if(err)
+	console.log(err);
 	console.log("Mongoose here!");
 });
 
