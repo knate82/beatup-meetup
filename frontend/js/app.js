@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 7ea4e5e6ceb13488ed119a42bc6d2dbe03aea81d
 angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
+
 
 .config(function($routeProvider){
   $routeProvider
@@ -31,4 +28,3 @@ angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
       controller: "MainController"
   });
 });
-

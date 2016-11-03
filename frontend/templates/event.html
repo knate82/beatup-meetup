@@ -1,14 +1,14 @@
 <header class="header">
-        <div class="container">                       
-            
+        <div class="container">
+
             <div class="profile-content pull-left">
                 <h1 class="name">{{event.name}}</h1>
-                <a class="btn btn-cta-primary pull-right" href="" target="_blank">Join Meetup</a>   
-                
-            </div><!--//profile-->              
+                <a class="btn btn-cta-primary pull-right" href="" target="_blank">Join Meetup</a>
+
+            </div><!--//profile-->
         </div><!--//container-->
     </header><!--//header-->
-    
+
     <div class="container sections-wrapper">
         <div class="row">
             <!--//primary-->
@@ -22,10 +22,10 @@
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span><a href="#">{{event.location.city}},  {{event.location.state}}</a></li>
                                 <li><i class="fa fa-map-marker"></i><span class="sr-only">Region:</span><a href="#">Region: {{event.region}}</a></li>
                             </ul>
-                        </div><!--//content-->  
-                    </div><!--//section-inner-->                 
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
                 </aside><!--//aside-->
-                
+
                 <aside class="skills aside section">
                     <div class="section-inner">
                         <h2 class="heading">Google Maps Area</h2>
@@ -34,26 +34,26 @@
   map-lazy-load-params="{{googleMapsUrl}}">
   <ng-map center="41,-87" zoom="3"></ng-map>
 </div>
-                            
-                                      
-                        </div><!--//content-->  
-                    </div><!--//section-inner-->                 
+
+
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
                 </aside><!--//section-->
-                
-               
+
+
                 <aside class="list aside section">
                     <div class="section-inner">
                         <h2 class="heading">Members</h2>
                         <div class="content">
                             <ul class="list-unstyled" ng-repeat="member in event.members">
                                 <li><i class="fa fa-user"></i> <a href="">{{member}}</a></li>
-                                
+
                             </ul>
                         </div><!--//content-->
                     </div><!--//section-inner-->
                 </aside><!--//section-->
-                
-              
+
+
             </div>
             <div class="primary col-md-8 col-sm-12 col-xs-12">
                 <section class="about section">
@@ -61,18 +61,18 @@
                         <h2 class="heading">About</h2>
                         <div class="content">
                             <p>{{event.description}}</p>
-                         
+
                         </div><!--//content-->
-                    </div><!--//section-inner-->                 
+                    </div><!--//section-inner-->
                 </section><!--//section-->
-    
+
                <section class="latest section">
                     <div class="section-inner">
                         <h2 class="heading">Discussion</h2>
-                        <div class="content">    
-                                               
-                          
-                          
+                        <div class="content">
+
+
+
                             <div class="item row" ng-repeat="comment in event.comments">
                                 <div class="col-md-1 col-sm-1 col-xs-1" href="" target="_blank">
                                 <i class="fa fa-user"></i>
@@ -80,18 +80,18 @@
                                 <div class="desc col-md-11 col-sm-11 col-xs-11">
                                     <h3 class="title"><a href="" target="_blank">{{comment.owner}}</a></h3>
                                     <p>{{comment.content}}</p>
-                                   
+
                                 </div><!--//desc-->
-                                                         
+
                             </div><!--//item-->
                             <br>
                         <input type="text" placeholder=" say something ..." size="40" class="comment-input">
-                                     <a class="btn btn-cta-primary" href="" target="_blank">Post</a>             
+                                     <a class="btn btn-cta-primary" href="" target="_blank">Post</a>
+                         <button ng-click="addFakeEvent()">Create a fake event</button>
                 </section><!--//section-->
-                
-               
-                
-            </div><!--//secondary-->    
+
+
+
+            </div><!--//secondary-->
         </div><!--//row-->
     </div><!--//masonry-->
-    

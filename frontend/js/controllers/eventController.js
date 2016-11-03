@@ -1,12 +1,12 @@
 angular.module("BeatupApp")
 
-.controller("eventController", ["$scope", 'UserService', '$http', function ($scope, UserService, $http) {
+.controller("eventController", ["$scope", 'UserService', 'EventService', '$http', function ($scope, UserService, EventService, $http) {
 
 	$scope.user = UserService.loggedInUser;
 	$scope.event = {};
 	$scope.comments = [];
 	$scope.members = [];
-	
+
 
 	$scope.joinEvent = function (index) {
 		EventService.joinEvent($scope.event[index], $scope.user)
@@ -14,10 +14,21 @@ angular.module("BeatupApp")
 			$scope.event.members.splice(index, 1, user);
 		});
 	};
-	
-	
-	
-	
+
+
+
+	$scope.addFakeEvent = function () {
+		EventService
+			.createEvent({
+				name: 'dummy event',
+				description: 'this is an automatically generated event',
+				region: 'Salt Lake City'
+			})
+			.then(console.log)
+			.catch(console.error);
+	};
+
+
 	$scope.addComment = function (index) {
 		$scope.comment = {
 			content: $scope.content,
