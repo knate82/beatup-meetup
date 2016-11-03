@@ -1,53 +1,61 @@
 angular.module("BeatupApp")
 
-.controller("eventController", ["$scope", 'UserService', 'EventService', '$http', function ($scope, UserService, EventService, $http) {
-
-	$scope.user = UserService.loggedInUser;
-	$scope.event = {};
-	$scope.comments = [];
-	$scope.members = [];
 
 
-	$scope.joinEvent = function (index) {
-		EventService.joinEvent($scope.event[index], $scope.user)
-		.then(function(user){
-			$scope.event.members.splice(index, 1, user);
-		});
-	};
+.controller("eventController", ["$scope", "UserService", "EventService", "$http", function($scope, UserService, EventService, $http) {
 
 
+    $scope.user = UserService.loggedInUser;
+    $scope.event = {};
+    $scope.comments = [];
+    $scope.members = [];
 
-	$scope.addFakeEvent = function () {
-		EventService
-			.createEvent({
-				name: 'dummy event',
-				description: 'this is an automatically generated event',
-				region: 'Salt Lake City'
-			})
-			.then(console.log)
-			.catch(console.error);
-	};
+    $scope.getEvent = function() {
+        $http.get("http://localhost:8000/event/:id").then(function(response) {
+            $scope.event = response.data;
+        });
+    };
+    $scope.getEvent();
 
-
-	$scope.addComment = function (index) {
-		$scope.comment = {
-			content: $scope.content,
-			owner: $scope.user
-		};
-		EventService.addComment($scope.event[index], $scope.comment)
-		.then(function(comment){
-			$scope.event.comments.splice(index, 1, comment);
-		});
-		$scope.comment = {
-			content: '',
-			owner: ''
-		};
-	};
-}])
+    $scope.joinEvent = function(index) {
+        EventService.joinEvent($scope.event[index], $scope.user)
+            .then(function(user) {
+                $scope.event.members.splice(index, 1, user);
+            });
+    };
 
 
 
-//dummy data//
+    $scope.addFakeEvent = function() {
+        EventService
+            .createEvent({
+                name: 'dummy event',
+                description: 'this is an automatically generated event',
+                region: 'Salt Lake City'
+            })
+            .then(console.log)
+            .catch(console.error);
+    };
+
+    $scope.addComment = function(index) {
+        $scope.comment = {
+            content: $scope.content,
+            owner: $scope.user
+        };
+        EventService.addComment($scope.event[index], $scope.comment)
+            .then(function(comment) {
+                $scope.event.comments.splice(index, 1, comment);
+            });
+        $scope.comment = {
+            content: "",
+            owner: ""
+        };
+    };
+}]);
+
+
+
+
 
 //$scope.event = {
 //		name: "Downtown Beatup",

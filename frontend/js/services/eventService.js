@@ -3,16 +3,18 @@ angular.module('BeatupApp')
 		// this.loggedInUser = UserService.loggedInUser;
 		var _this = this;
 		var newEvent = {};
+		var baseUrl = "http://localhost:8000";
+
+
 
 		//adding user (yourself) as a member to an event//
 		this.joinEvent = function(eventObj) {
-			return $http
-				.post(baseUrl + '/api/event/members', eventObj._id)
-				.then(function(response) {
-					_this.loggedInUser = UserService.loggedInUser;
-					_this.Event.push(_this.loggedInUser.username);
-					return response.data;
-				});
+			return $http.post(baseUrl + '/api/event/:id/members', eventObj._id)
+			.then(function(response) {
+				_this.loggedInUser = UserService.loggedInUser;
+				_this.Event.push(_this.loggedInUser.username);
+				return response.data;
+			});
 		};
 
 		//adding comment to event page//
@@ -33,6 +35,7 @@ angular.module('BeatupApp')
 				headers: {
 					authorization: 'Bearer ' + TokenService.getToken()
 				}
+
 			});
 		};
 	}]);

@@ -42,7 +42,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 				_this.loggedInUser = response.data.user;
 				TokenService.saveToken(response.data.token);
 				console.log(_this.loggedInUser);
-				$location.path('/home'); //change
+				$location.path('/profile'); //change
 			} else {
 				alert("Login failed.");
 			}
@@ -73,6 +73,7 @@ app.factory("AuthInterceptor", function ($location, $q, TokenService) {
 		}
 	};
 });
+
 
 app.config(["$httpProvider", function ($httpProvider) {
 	$httpProvider.interceptors.push("AuthInterceptor");

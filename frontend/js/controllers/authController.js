@@ -1,33 +1,79 @@
-angular.module('BeatupApp')
+var app = angular.module("MeetupApp.Auth", ['ngRoute']);
 
-.controller('authController', ['$scope', 'UserService', '$location', function ($scope, UserService, $location) {
+app.service("TokenService", function () {
+	var userToken = 'token';
+	this.saveToken = function (token) {
+		localStorage[userToken] = token;
+	};
+	this.getToken = function (token) {
+		return localStorage[userToken];
+	};
+	this.removeToken = function () {
+		localStorage.removeItem(userToken);
+	};
+});
 
-	$scope.newUser = {};
-	$scope.loginUser = {};
-	$scope.user = UserService.loggedInUser;
+app.service("UserService", function ($http, $location, TokenService) {
 
-	$scope.login = function (user) {
-		UserService.login(user).then(function (response) {
-			$scope.user = UserService.loggedInUser;
-			console.log("$scope.user", $scope.user);
-			$scope.loginUser = {};
+	var baseUrl = "http://localhost:8000";
+	var _this = this;
+
+	this.loggedInUser = {};
+
+	this.signup = function (userObj) {
+		return $http.post(baseUrl + '/auth/signup', userObj).then(function (response) {
+			if (response.data._id && response.data.username === userObj.username) {
+				console.log("Successfully signed up!");
+				return response.data;
+			}
 		});
 	};
+	this.login = function (userObj) {
 
-	$scope.logout = function () {
-		UserService.logout().then(function () {
-			$location.path('/logout');
+		var data = {
+			username: userObj.username,
+			password: userObj.password
+		};
+		return $http.post(baseUrl + '/auth/login', data).then(function (response) {
+
+			console.log("response ", response);
+			if (response.data.token) {
+				_this.loggedInUser = response.data.user;
+				TokenService.saveToken(response.data.token);
+				console.log(_this.loggedInUser);
+				$location.path('/profile'); //change
+			} else {
+				alert("Login failed.");
+			}
 		});
 	};
-
-    
-	$scope.signup = function (user) {
-        
-		UserService.signup(user).then(function (response) {
-			UserService.login(user).then(function (response) {
-				$scope.user = {};
-			});
-		});
+	this.logout = function () {
+		TokenService.removeToken();
+		this.loggedInUser = {};
 	};
-    
-}])
+});
+
+app.factory("AuthInterceptor", function ($location, $q, TokenService) {
+	return {
+		request: function (config) {
+			var token = TokenService.getToken();
+			if (token) {
+				config.headers = config.headers || {};
+				config.headers.authorization = "Bearer " + token;
+			}
+			return config;
+		},
+		responseError: function (response) {
+			if (response.status === 401) {
+				TokenService.removeToken();
+				$location.path("/login");
+			}
+			$q.reject(response);
+		}
+	};
+});
+
+
+app.config(["$httpProvider", function ($httpProvider) {
+	$httpProvider.interceptors.push("AuthInterceptor");
+}]);

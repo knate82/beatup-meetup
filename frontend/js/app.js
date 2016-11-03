@@ -23,6 +23,10 @@ angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
       templateUrl: "./templates/cityview.html",
       controller: "SeattleController"
   })
+  .when("/profile", {
+      templateUrl: "./templates/profile.html",
+      controller: "ProfileController"
+  })
   .otherwise("/main", {
       templateUrl: "./templates/main.html",
       controller: "MainController"
