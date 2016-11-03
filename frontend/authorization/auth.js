@@ -31,7 +31,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 	this.login = function (userObj) {
 
 		var data = {
-			username: userObj.email,
+			username: userObj.username,
 			password: userObj.password
 		};
 		return $http.post(baseUrl + '/auth/login', data).then(function (response) {
@@ -72,6 +72,7 @@ app.factory("AuthInterceptor", function ($location, $q, TokenService) {
 		}
 	};
 });
+
 
 app.config(["$httpProvider", function ($httpProvider) {
 	$httpProvider.interceptors.push("AuthInterceptor");
