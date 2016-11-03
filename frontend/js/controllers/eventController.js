@@ -1,42 +1,48 @@
 angular.module("BeatupApp")
 
-.controller("eventController", ["$scope", 'UserService', '$http', function ($scope, UserService, $http) {
+.controller("eventController", ["$scope", "UserService", "EventService", "$http", function ($scope, UserService, EventService, $http) {
 
 	$scope.user = UserService.loggedInUser;
 	$scope.event = {};
 	$scope.comments = [];
 	$scope.members = [];
+
+
+	$scope.getEvent = function () {
+		$http.get("http://localhost:8000/event/:id").then(function (response) {
+			$scope.event = response.data;
+		});
+	};
+	$scope.getEvent();
 	
 
 	$scope.joinEvent = function (index) {
 		EventService.joinEvent($scope.event[index], $scope.user)
-		.then(function(user){
-			$scope.event.members.splice(index, 1, user);
-		});
+			.then(function (user) {
+				$scope.event.members.splice(index, 1, user);
+			});
 	};
-	
-	
-	
-	
+
+
 	$scope.addComment = function (index) {
 		$scope.comment = {
 			content: $scope.content,
 			owner: $scope.user
 		};
 		EventService.addComment($scope.event[index], $scope.comment)
-		.then(function(comment){
-			$scope.event.comments.splice(index, 1, comment);
-		});
+			.then(function (comment) {
+				$scope.event.comments.splice(index, 1, comment);
+			});
 		$scope.comment = {
-			content: '',
-			owner: ''
+			content: "",
+			owner: ""
 		};
 	};
 }])
 
 
 
-//dummy data//
+
 
 //$scope.event = {
 //		name: "Downtown Beatup",
