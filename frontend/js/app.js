@@ -1,5 +1,5 @@
-
 angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
+
 
 .config(function($routeProvider){
   $routeProvider
@@ -32,4 +32,3 @@ angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
       controller: "MainController"
   });
 });
-

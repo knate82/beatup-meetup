@@ -5,4 +5,4 @@ angular.module("BeatupApp")
 		templateUrl: "directives/createForm.html",
 		restrict: "EA"
 	};
-})
+});

@@ -21,6 +21,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 	this.loggedInUser = {};
 
 	this.signup = function (userObj) {
+        console.log(userObj);
 		return $http.post(baseUrl + '/auth/signup', userObj).then(function (response) {
 			if (response.data._id && response.data.username === userObj.username) {
 				console.log("Successfully signed up!");
