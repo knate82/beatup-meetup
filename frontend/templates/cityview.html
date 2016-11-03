@@ -8,13 +8,15 @@
             <p class="header-text">{{pText}}</p>
         </div>
         <div class="col-sm-4 text-center">
-            <button class="btn btn-md btn-danger">Create a beatup</button>
+            <button class="btn btn-md btn-danger" ng-click="goMake = !goMake">Create a beatup</button>
         </div>
         <div class="col-sm-4"></div>
     </div>
 </div>
 <div class="container main-content">
-    <div class="row"></div>
+    <div class="row">
+    	   <createform></createform>
+    </div>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10 text-center">
