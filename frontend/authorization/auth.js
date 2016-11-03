@@ -41,7 +41,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 				_this.loggedInUser = response.data.user;
 				TokenService.saveToken(response.data.token);
 				console.log(_this.loggedInUser);
-				$location.path('/home'); //change
+				$location.path('/profile'); //change
 			} else {
 				alert("Login failed.");
 			}
