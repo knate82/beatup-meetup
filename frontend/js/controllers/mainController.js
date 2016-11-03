@@ -2,11 +2,11 @@ angular.module("BeatupApp")
 
 .controller("MainController", ["$scope", "$location", function($scope, $location){
     
-    $scope.login = function(){
+    $scope.goToLogin = function(){
         $location.path("/login");
     }
     
-    $scope.register = function(){
+    $scope.goToRegister = function(){
         $location.path("/signup");
     }
     

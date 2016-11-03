@@ -31,7 +31,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 	this.login = function (userObj) {
 
 		var data = {
-			username: userObj.email,
+			username: userObj.username,
 			password: userObj.password
 		};
 		return $http.post(baseUrl + '/auth/login', data).then(function (response) {
@@ -41,7 +41,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 				_this.loggedInUser = response.data.user;
 				TokenService.saveToken(response.data.token);
 				console.log(_this.loggedInUser);
-				$location.path('/home'); //change
+				$location.path('/profile'); //change
 			} else {
 				alert("Login failed.");
 			}
@@ -72,6 +72,7 @@ app.factory("AuthInterceptor", function ($location, $q, TokenService) {
 		}
 	};
 });
+
 
 app.config(["$httpProvider", function ($httpProvider) {
 	$httpProvider.interceptors.push("AuthInterceptor");
