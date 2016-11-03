@@ -50,6 +50,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 	this.logout = function () {
 		TokenService.removeToken();
 		this.loggedInUser = {};
+        $location.path("/main");
 	};
 });
 
