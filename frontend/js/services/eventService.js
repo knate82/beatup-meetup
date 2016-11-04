@@ -35,7 +35,7 @@ angular.module('BeatupApp')
 				headers: {
 					authorization: 'Bearer ' + TokenService.getToken()
 				}
-
+				
 			});
 		};
 	}]);

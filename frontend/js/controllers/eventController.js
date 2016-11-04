@@ -9,7 +9,24 @@ angular.module("BeatupApp")
     $scope.event = {};
     $scope.comments = [];
     $scope.members = [];
+	
+	
+	var resetBeatupForm = function () {
+		$scope.newBeatup = {
+			name: '',
+			description: '',
+			location: {
+				street: '',
+				city: '',
+				state: ''
+			},
+			region: '',
+			imgUrl: ''
+		};
+	}
 
+	resetBeatupForm();
+	
     $scope.getEvent = function() {
         $http.get("http://localhost:8000/event/:id").then(function(response) {
             $scope.event = response.data;
@@ -26,15 +43,18 @@ angular.module("BeatupApp")
 
 
 
-    $scope.addFakeEvent = function() {
-        EventService
-            .createEvent({
-                name: 'dummy event',
-                description: 'this is an automatically generated event',
-                region: 'Salt Lake City'
-            })
-            .then(console.log)
-            .catch(console.error);
+    $scope.addEvent = function() {
+		EventService
+			.createEvent($scope.newBeatup)
+			.then(function (res) {
+				console.log(res);
+				return res;
+			})
+			.then(function () {
+				// TODO add logic on success
+				resetBeatupForm();
+			})
+			.catch(console.error);
     };
 
     $scope.addComment = function(index) {

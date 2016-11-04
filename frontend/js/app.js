@@ -21,7 +21,7 @@ angular.module("BeatupApp", ["ngRoute", "MeetupApp.Auth"])
   })
   .when("/cityview", {
       templateUrl: "./templates/cityview.html",
-      controller: "SeattleController"
+      controller: "eventController"
   })
   .when("/profile", {
       templateUrl: "./templates/profile.html",

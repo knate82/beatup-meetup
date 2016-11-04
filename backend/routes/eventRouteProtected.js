@@ -12,7 +12,7 @@ eventRouteProtected.route("/")
 			organizer: req.user._id
 		}, function (err, events) {
 			if (err) res.status(500).send(err);
-			res.send(events);
+			else res.send(events);
 		});
 	})
 	// POST a new event listing
@@ -21,7 +21,7 @@ eventRouteProtected.route("/")
 		newEvent.organizer = req.user._id;
 		newEvent.save(function (err, savedEvent) {
 			if (err) res.status(500).send(err);
-			res.send(savedEvent);
+			else res.send(savedEvent);
 		});
 	});
 
@@ -37,7 +37,7 @@ eventRouteProtected.route("/:eventId")
 			.populate('attendees')
 			.exec(function (err, foundEvent) {
 				if (err) res.status(500).send(err);
-				res.send(foundEvent);
+				else res.send(foundEvent);
 			});
 	})
 	// PUT an event posting
@@ -52,7 +52,7 @@ eventRouteProtected.route("/:eventId")
 			},
 			function (err, updatedEvent) {
 				if (err) res.status(500).send(err);
-				res.send(updatedEvent);
+				else res.send(updatedEvent);
 			});
 	})
 	// DELETE an event posting
@@ -62,7 +62,7 @@ eventRouteProtected.route("/:eventId")
 			organizer: req.user._id
 		}, function (err, deletedEvent) {
 			if (err) res.status(500).send(err);
-			res.send(deletedEvent);
+			else res.send(deletedEvent);
 		});
 	});
 

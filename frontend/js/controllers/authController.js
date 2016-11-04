@@ -4,6 +4,7 @@ angular.module('BeatupApp')
 
 	$scope.newUser = {};
 	$scope.user = {};
+	$scope.isLoggedIn = false;
 //	$scope.user = UserService.loggedInUser;
 
 	$scope.login = function () {
@@ -11,6 +12,8 @@ angular.module('BeatupApp')
 			$scope.user = UserService.loggedInUser;
 			console.log("$scope.user", $scope.user);
 			$scope.loginUser = {};
+			$scope.isLoggedIn = true;
+			console.log($scope.isLoggedIn);
 		});
 	};
     
@@ -23,16 +26,22 @@ angular.module('BeatupApp')
     }
 
 	$scope.logout = function () {
-		UserService.logout().then(function () {
-			$location.path('/logout');
-		});
-	};
+		console.log("hitting the logout");
+		$scope.isLoggedIn = false;
+			console.log($scope.isLoggedIn);
+		UserService.logout()
+//			.then(function () {
+//			$location.path('/logout');
+//			
+		};
 
+ 
 	$scope.signup = function () {
 		UserService.signup($scope.user).then(function (response) {
-			UserService.login($scope.newUser).then(function (response) {
+			UserService.login($scope.user).then(function (response) {
 				$scope.newUser = {};
 			});
 		});
 	};
 }])
+
