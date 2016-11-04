@@ -1,6 +1,11 @@
 angular.module("BeatupApp")
 
-.controller("MainController", ["$scope", "$location", function($scope, $location){
+.controller("MainController", ["$scope", "$location", "UserService", function($scope, $location, UserService){
+	
+	if(UserService.loggedInUser){
+		$scope.userIsLoggedIn = true;
+		console.log($scope.userIsLoggedIn)
+	}
     
     $scope.goToLogin = function(){
         $location.path("/login");

@@ -2,15 +2,42 @@ angular.module("BeatupApp")
 
 
 
-.controller("eventController", ["$scope", "UserService", "EventService", "$http", function($scope, UserService, EventService, $http) {
+.controller("eventController", ["$scope", "UserService", "EventService", "$http", "$routeParams", function ($scope, UserService, EventService, $http, $routeParams) {
 
 
-    $scope.user = UserService.loggedInUser;
-    $scope.event = {};
-    $scope.comments = [];
-    $scope.members = [];
-	
-	
+	$scope.user = UserService.loggedInUser;
+	$scope.event = {};
+	$scope.comments = [];
+	$scope.members = [];
+
+	$scope.getEvent = function (eventId) {
+		$http.get("http://localhost:8000/api/event/" + eventId).then(function (response) {
+			$scope.event = response.data;
+			console.log($scope.event);
+
+		});
+	};
+
+	$scope.getAllEvents = function () {
+		EventService.getAll()
+			.then(function (events) {
+				$scope.events = events;
+			})
+	};
+
+	/*
+	 * if there are route params for an individual event, use 
+	 * functions to get individual event data.
+	 */
+
+	if ($routeParams.eventID) {
+		console.log($routeParams.eventID);
+		var eventID = $routeParams.eventID;
+		$scope.getEvent(eventID);
+	} else {
+		$scope.getAllEvents();
+	}
+
 	var resetBeatupForm = function () {
 		$scope.newBeatup = {
 			name: '',
@@ -26,24 +53,21 @@ angular.module("BeatupApp")
 	}
 
 	resetBeatupForm();
-	
-    $scope.getEvent = function() {
-        $http.get("http://localhost:8000/event/:id").then(function(response) {
-            $scope.event = response.data;
-        });
-    };
-    $scope.getEvent();
-
-    $scope.joinEvent = function(index) {
-        EventService.joinEvent($scope.event[index], $scope.user)
-            .then(function(user) {
-                $scope.event.members.splice(index, 1, user);
-            });
-    };
 
 
 
-    $scope.addEvent = function() {
+
+
+	$scope.joinEvent = function (index) {
+		EventService.joinEvent($scope.event[index], $scope.user)
+			.then(function (user) {
+				$scope.event.members.splice(index, 1, user);
+			});
+	};
+
+
+
+	$scope.addEvent = function () {
 		EventService
 			.createEvent($scope.newBeatup)
 			.then(function (res) {
@@ -55,22 +79,23 @@ angular.module("BeatupApp")
 				resetBeatupForm();
 			})
 			.catch(console.error);
-    };
+	};
 
-    $scope.addComment = function(index) {
-        $scope.comment = {
-            content: $scope.content,
-            owner: $scope.user
-        };
-        EventService.addComment($scope.event[index], $scope.comment)
-            .then(function(comment) {
-                $scope.event.comments.splice(index, 1, comment);
-            });
-        $scope.comment = {
-            content: "",
-            owner: ""
-        };
-    };
+
+	$scope.addComment = function (index) {
+		$scope.comment = {
+			content: $scope.content,
+			owner: $scope.user
+		};
+		EventService.addComment($scope.event[index], $scope.comment)
+			.then(function (comment) {
+				$scope.event.comments.splice(index, 1, comment);
+			});
+		$scope.comment = {
+			content: "",
+			owner: ""
+		};
+	};
 }]);
 
 

@@ -27,8 +27,8 @@
 					<h2 class="heading sr-only">Information</h2>
 					<div class="content">
 						<ul class="list-unstyled">
-							<li><i class="fa fa-map-marker"></i><span class="sr-only">Street:</span>{{event.location.street}}</li>
-							<li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span><a href="">{{event.location.city}},  {{event.location.state}}</a></li>
+							<li><i class="fa fa-map-marker"></i><span class="sr-only">Street:</span>{{event.location.street || "Street address not available"}}</li>
+							<li><i class="fa fa-map-marker"></i><span class="sr-only">Location:</span><a href="">{{event.location.city || "city not available"}},  {{event.location.state}}</a></li>
 							<li><i class="fa fa-map-marker"></i><span class="sr-only">Region:</span><a href="#">Region: {{event.region}}</a></li>
 						</ul>
 					</div>
@@ -43,7 +43,7 @@
 					<h2 class="heading">Google Maps Area</h2>
 					<div class="content">
 
-
+<iframe height="325" width="325" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d172133.4262739159!2d-122.4759873222513!3d47.614762835739846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c93e83355%3A0x102565466944d59a!2sSeattle%2C+WA!5e0!3m2!1sen!2sus!4v1478280153516" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 					</div>
 					<!--//content-->

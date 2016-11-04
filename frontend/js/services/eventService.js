@@ -5,7 +5,12 @@ angular.module('BeatupApp')
 		var newEvent = {};
 		var baseUrl = "http://localhost:8000";
 
-
+		this.getAll = function() {
+			return $http.get(baseUrl + "/event")
+			.then(function(res) {
+				return res.data;
+			})
+		}
 
 		//adding user (yourself) as a member to an event//
 		this.joinEvent = function(eventObj) {
