@@ -6,6 +6,7 @@ app.service("TokenService", function () {
 		localStorage[userToken] = token;
 	};
 	this.getToken = function (token) {
+		console.log("heywasuppp");
 		return localStorage[userToken];
 	};
 	this.removeToken = function () {
@@ -51,6 +52,7 @@ app.service("UserService", function ($http, $location, TokenService) {
 	this.logout = function () {
 		TokenService.removeToken();
 		this.loggedInUser = {};
+		console.log("this.loggedInUser");
         $location.path("/main");
 	};
 });

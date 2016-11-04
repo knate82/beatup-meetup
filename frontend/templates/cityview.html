@@ -1,4 +1,5 @@
-<div class="row topBar">
+<navbar></navbar>
+   <div class="row topBar">
     <h4>Meetup Beatup</h4>
 <div>
 <div class="container-fluid main-header {{cityHeaderClass}}">
@@ -21,10 +22,13 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10 text-center">
             <div class="row">
-                <div class="col-md-4 single-bu-container" ng-repeat="event in beatups">
-                    <img class="img-thumbnail single-bu-image" src="{{event.imgUrl}}" alt="hey">
+                <div class="col-md-4 single-bu-container" ng-repeat="event in events">
+                    <img class="img-thumbnail single-bu-image" src="{{event.imgUrl}}" alt="img not found">
                     <div class="col-xs-4 single-bu-textcenter">
-                        <a class="single-bu-overlay" href="{{event.detail}}">{{event.name}}</a>
+                        <a class="single-bu-overlay" href="#/event/{{event._id}}">{{event.name}}</a>
+                        <h5>{{event.region}}</h5>
+                        <h5>{{event.name}}</h5>
+                        <h5>{{event.description}}</h5>
                     </div>
                 </div>
             </div>
